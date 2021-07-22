@@ -1,15 +1,17 @@
 {
   "name": "eleventy-web-starter",
   "version": "2.0.0",
-  "description": "Robust Eleventy Boilerplate",
+  "description": "Eleventy Web Starter is a lightweight Eleventy boilerplate designed to be simple but robust",
   "scripts": {
 		"clean": "del build",
-    "dev:eleventy": "eleventy --serve",
-    "dev:postcss": "postcss source/_assets/css/styles.css -o source/_includes/_css/styles.css -w --verbose",
-    "build:postcss": "NODE_ENV=production postcss source/_assets/css/styles.css -o source/_includes/_css/styles.css --verbose",
-    "build:eleventy": "eleventy",
-    "start": "run-p dev:*",
-    "build": "run-s clean build:*"
+		"dev:eleventy": "eleventy --serve",
+		"dev:scripts": "esbuild source/_assets/scripts/scripts.js --outfile=source/static/scripts.min.js --bundle --watch",
+		"dev:postcss": "postcss source/_assets/css/styles.css -o source/_includes/_css/styles.css -w --verbose",
+		"build:postcss": "NODE_ENV=production postcss source/_assets/css/styles.css -o source/_includes/_css/styles.css --verbose",
+		"build:scripts": "esbuild scripts.js --outfile=source/static/scripts.min.js --bundle --minify",
+		"build:eleventy": "eleventy",
+		"start": "run-p dev:*",
+		"build": "run-s clean build:*"
   },
   "keywords": [
     "eleventy",
@@ -27,6 +29,7 @@
     "clean-css": "^5.1.2",
     "cssnano": "^5.0.5",
     "del-cli": "^3.0.1",
+    "esbuild": "^0.12.15",
     "html-minifier": "^4.0.0",
     "luxon": "^1.26.0",
     "npm-run-all": "^4.1.5",
